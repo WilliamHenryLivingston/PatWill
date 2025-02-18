@@ -211,6 +211,18 @@ PrefabInstance:
       propertyPath: distanceToMove
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1712330498351126357, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: moveOnXAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712330498351126357, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: platformSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712330498351126357, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: distanceToMove
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3521549371117594499, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: moveOnYAxis
       value: 1
@@ -222,6 +234,18 @@ PrefabInstance:
     - target: {fileID: 3521549371117594499, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: distanceToMove
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555912331444114325, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: moveOnZAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555912331444114325, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: platformSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555912331444114325, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: distanceToMove
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3813867926318746290, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: moveOnYAxis
@@ -242,6 +266,18 @@ PrefabInstance:
     - target: {fileID: 3965218896870106145, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: distanceToMove
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664782478156334672, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: moveOnZAxis
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664782478156334672, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: platformSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664782478156334672, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: distanceToMove
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5365388718978546969, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -273,12 +309,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153544988913278136, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: OnPressureStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7153544988913278136, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: OnPressureStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 187322832}
+    - target: {fileID: 7153544988913278136, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
+      propertyPath: OnPressureStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7270582579013088225, guid: 65f03df802bcf42488e9bc9584d5d3c5, type: 3}
       propertyPath: moveOnZAxis
       value: 1
