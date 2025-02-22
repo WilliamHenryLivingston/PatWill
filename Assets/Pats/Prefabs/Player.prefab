@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3404109972851414486}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.509, y: -0.48600006, z: -1.242}
+  m_LocalPosition: {x: -0.5, y: -0.48600006, z: 0.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -494,7 +494,7 @@ MonoBehaviour:
   interactAbility: {fileID: 7058211058360487555}
   commandAbility: {fileID: 3664477981478225647}
   controller: {fileID: 1377061922677002758}
-  mouseSensitivity: 2
+  mouseSensitivity: 500
   checkSphereSize: 0.01
 --- !u!114 &8521801429974302131
 MonoBehaviour:
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponTip: {fileID: 3575958675703092445}
   projectilePrefab: {fileID: 3154489145113355460, guid: 96b28e4dec0f0ed4b8f48dafdeccd075, type: 3}
-  shootingForce: 300
+  shootingForce: 1000
 --- !u!114 &1498754198792958465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   isOnGroundCheckSphereSize: 0.01
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 119
   controller: {fileID: 1377061922677002758}
   gravityAcceleration: -9.81
 --- !u!114 &7058211058360487555
@@ -585,7 +585,7 @@ MonoBehaviour:
   interactionTip: {fileID: 7047667125829138367}
   interactionFilter:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 243
   grabbingAbility: {fileID: 6790398807856135922}
 --- !u!114 &6790398807856135922
 MonoBehaviour:

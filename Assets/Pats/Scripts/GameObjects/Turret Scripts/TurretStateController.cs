@@ -8,6 +8,7 @@ public class TurretStateController : MonoBehaviour
     [SerializeField] private Transform playerTarget;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private bool playerInTrigger = false;
+    [SerializeField] private bool turretDamageOn = false;
 
     [Header("Turret References")]
     [SerializeField] private LineRenderer lineRenderer;
@@ -23,6 +24,7 @@ public class TurretStateController : MonoBehaviour
     private void Awake()
     {
         currentState = new TurretIdle(this);
+        playerTarget = GameObject.Find("Player")?.transform;
     }
     void Start()
     {
@@ -72,4 +74,6 @@ public class TurretStateController : MonoBehaviour
     public float GetRotationMin() => rotationMin;
     public float GetRotationMax() => rotationMax;
     public bool IsPlayerInTrigger() => playerInTrigger;
+
+    public bool TurretDamageOn() => turretDamageOn;
 }

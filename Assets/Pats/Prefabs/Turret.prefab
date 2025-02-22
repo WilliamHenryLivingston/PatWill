@@ -43,9 +43,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5262184700629866882}
-  - component: {fileID: 7093829986983710715}
   - component: {fileID: 8259432949615764905}
   - component: {fileID: 2094198453679975942}
+  - component: {fileID: 4234869780679995818}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -69,30 +69,6 @@ Transform:
   - {fileID: 8929686809206066657}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7093829986983710715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762431644174331799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c479cb26caeaf9340bf96c40f5758dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTarget: {fileID: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 520
-  playerInTrigger: 0
-  lineRenderer: {fileID: 2094198453679975942}
-  weaponPoint: {fileID: 5226576137218944903}
-  turretHead: {fileID: 1488459497344647689}
-  turretSphereCollider: {fileID: 8259432949615764905}
-  scanSpeed: 10
-  rotationMin: -90
-  rotationMax: 90
 --- !u!135 &8259432949615764905
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -135,7 +111,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 021bd8d92572ee042ae572d7f770e223, type: 2}
+  - {fileID: 2100000, guid: ba57ca2a507fd704788efe92afe9d3a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,6 +194,31 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &4234869780679995818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4762431644174331799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bcea5c43bbc204aa1bad07d2e3bc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTarget: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 136
+  playerInTrigger: 0
+  turretDamageOn: 0
+  lineRenderer: {fileID: 2094198453679975942}
+  weaponPoint: {fileID: 5226576137218944903}
+  turretHead: {fileID: 1488459497344647689}
+  turretSphereCollider: {fileID: 8259432949615764905}
+  scanSpeed: 10
+  rotationMin: -90
+  rotationMax: 90
 --- !u!1 &5412717951219237331
 GameObject:
   m_ObjectHideFlags: 0

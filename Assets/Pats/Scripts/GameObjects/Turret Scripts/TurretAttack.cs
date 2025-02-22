@@ -10,6 +10,8 @@ public class TurretAttack : TurretState
     private SphereCollider turretSphereCollider;
     private float scanSpeed;
 
+    private bool turretDamageOn = true;
+
     
     public TurretAttack(TurretStateController turretController) : base(turretController)
     {
@@ -21,6 +23,7 @@ public class TurretAttack : TurretState
         weaponPoint = turretController.GetWeaponPoint();
         turretHead = turretController.GetTurretHead();
         turretSphereCollider = turretController.GetTurretSphereCollider();
+        turretDamageOn = turretController.TurretDamageOn();
     }
 
     public override void EnterState()
@@ -60,11 +63,15 @@ public class TurretAttack : TurretState
             if (tempHit.collider.CompareTag("Player"))
             {
                 Debug.Log("Damaging the player");
-                playerHealth.DecreaseHealth(1f);
+                if (turretDamageOn == true)
+                {
+                    playerHealth.DecreaseHealth(1f); //disabled for testing
+                }
             }
             else
             {
                 Debug.Log("Target is being shielded!!");
+
             }
         }
         Vector3 startPoint = weaponPoint.position;
