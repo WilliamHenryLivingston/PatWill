@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MovingPlatform
   - Interactable
+  - PushableBox
   layers:
   - Default
   - TransparentFX
