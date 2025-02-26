@@ -625,6 +625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pressure Cube Large Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1003343031195206392, guid: 00a743a5ac2f3be4bb3c93982f2e0a89, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2909271427375854413, guid: 00a743a5ac2f3be4bb3c93982f2e0a89, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -1233,7 +1237,7 @@ Transform:
   m_GameObject: {fileID: 1124860693}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.45, y: -6.08, z: 39.01}
+  m_LocalPosition: {x: 12.55, y: -6.08, z: 39.01}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
