@@ -394,6 +394,7 @@ MonoBehaviour:
   needsKey: 0
   doors:
   - {fileID: 7406314023900340496}
+  - {fileID: 30900403451696410}
   shade: {fileID: 0}
   shadeLight: {fileID: 0}
 --- !u!1001 &109097622964570290
@@ -590,9 +591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe76494b79bf684e8cd93cd903d7649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorButton: {fileID: 0}
-  openOffset: {x: 0, y: 0, z: 0}
-  doorSpeed: 0
+  doorButton: {fileID: 2662605933371720478}
+  openOffset: {x: 2, y: 0, z: 0}
+  doorSpeed: 2
 --- !u!4 &5034632497768145562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4669955612368621499, guid: d4ca6330598b7984ca075683684f0872, type: 3}
@@ -1103,9 +1104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe76494b79bf684e8cd93cd903d7649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorButton: {fileID: 0}
-  openOffset: {x: 0, y: 0, z: 0}
-  doorSpeed: 0
+  doorButton: {fileID: 2662605933371720478}
+  openOffset: {x: -2, y: 0, z: 0}
+  doorSpeed: 2
 --- !u!4 &7318421748836546752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4669955612368621499, guid: d4ca6330598b7984ca075683684f0872, type: 3}
@@ -1121,7 +1122,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5301120609199573562, guid: 8eead6da0f39af14da40d5f2642e430b, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7228628399918692633, guid: 8eead6da0f39af14da40d5f2642e430b, type: 3}
       propertyPath: m_Name
@@ -1129,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228628399918692633, guid: 8eead6da0f39af14da40d5f2642e430b, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7759970487933935821, guid: 8eead6da0f39af14da40d5f2642e430b, type: 3}
       propertyPath: m_LocalScale.x
@@ -1253,7 +1254,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1258099144688585858}
+      - m_Target: {fileID: 30900403451696410}
         m_TargetAssemblyTypeName: Door, Assembly-CSharp
         m_MethodName: OpenDoor
         m_Mode: 1

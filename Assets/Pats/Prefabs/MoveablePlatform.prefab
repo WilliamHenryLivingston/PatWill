@@ -175,8 +175,8 @@ MonoBehaviour:
   startPosition: 0
   startingPosition: {x: 0, y: 0, z: 0}
   moveOnXAxis: 0
-  moveOnYAxis: 0
+  moveOnYAxis: 1
   moveOnZAxis: 0
   platformSpeed: 1
-  distanceToMove: 0
+  distanceToMove: 1
   pingpong: 0
