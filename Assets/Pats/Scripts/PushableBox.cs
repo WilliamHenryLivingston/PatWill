@@ -1,34 +1,28 @@
 using UnityEngine;
 
-public class PushableObject : MonoBehaviour
+public class PushableBox : MonoBehaviour
 {
-    //[SerializeField] private float pushForce = 10f;
+    [SerializeField] private float pushSpeed = 3f;
+    private bool isBeingPushed = false;
+    private Rigidbody rb;
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log($"Collided with: {collision.gameObject.name}"); // Check if collision happens
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
-    //    if (collision.gameObject.CompareTag("Player")) // Ensure the Player has this tag
-    //    {
-    //        Debug.Log("Collision with player detected!");
+    public void SetPushing(bool pushing)
+    {
+        isBeingPushed = pushing;
+    }
 
-    //        Rigidbody rb = GetComponent<Rigidbody>();
-    //        if (rb != null)
-    //        {
-    //            Debug.Log("Rigidbody found, applying force...");
-
-    //            Vector3 pushDirection = collision.contacts[0].normal * -1; // Push away from the player
-    //            pushDirection.y = 0; // Keep movement horizontal
-
-    //            rb.AddForce(pushDirection * pushForce, ForceMode.VelocityChange);
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("No Rigidbody found on this object!");
-    //        }
-    //    }
-    //}
+    private void FixedUpdate()
+    {
+        if (isBeingPushed)
+        {
+            // Move the box in the player's movement direction
+            Vector3 playerVelocity = PlayerInput.Instance.GetMoveDirection();
+            rb.velocity = new Vector3(playerVelocity.x, 0, playerVelocity.z) * pushSpeed;
+        }
+    }
 }
-
-
-

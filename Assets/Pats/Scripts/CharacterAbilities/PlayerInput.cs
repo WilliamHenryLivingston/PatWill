@@ -34,16 +34,20 @@ public class PlayerInput : MonoBehaviour
 
     //reference to the head/camera GameObject
     [SerializeField] private CharacterController controller;
+    private Vector3 moveDir;
 
     [SerializeField] private float mouseSensitivity;
 
     [SerializeField] private float checkSphereSize = 0.01f;
-    [SerializeField] private float pushForce = 5f;
+    [SerializeField] private float pushStrength = 10f; // Adjustable push force
 
     private Transform currentPlatform;
     private Vector3 lastPlatformPosition;
 
-
+    //-------------------------------------------------------------
+    private Vector3 platformVelocity;
+    private Transform platform;
+    //-------------------------------------------------------
     void Start()
     {
         //Lambda expression
@@ -68,7 +72,7 @@ public class PlayerInput : MonoBehaviour
 
         if (moveAbilty != null)
         {
-            Vector3 moveDir = new Vector3();
+            moveDir = new Vector3();
             moveDir.x = Input.GetAxis("Horizontal");
             moveDir.z = Input.GetAxis("Vertical");
             moveAbilty.Move(moveDir);
@@ -109,51 +113,47 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.collider.CompareTag("MovingPlatform"))
-        {
-            if (currentPlatform == null)
-            {
-                Debug.Log(currentPlatform.name);
-                currentPlatform = hit.collider.transform;
-                lastPlatformPosition = currentPlatform.position;
-                Debug.Log(currentPlatform.name);
-            }
-        }
-        else
-        {
-            currentPlatform = null;
-        }
-
-        //Debug.Log($"Collided with: {hit.collider.name}");
-
-        if (hit.collider.CompareTag("PushableBox"))
-        {
-            //Debug.Log("Player hit the box!");
-
-            Rigidbody boxRigidbody = hit.collider.attachedRigidbody;
-            if (boxRigidbody != null)
-            {
-                //Debug.Log("Rigidbody found, applying force...");
-
-                Vector3 pushDirection = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z).normalized;
-
-
-                boxRigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
-            }
-            else
-            {
-                Debug.Log("No Rigidbody found on the box!");
-            }
-        }
-    }
-
     //Testing the sphere location
     private void OnDrawGizmos()
     {
         //Drawing a sphere at the feet of the player
         Gizmos.DrawSphere(transform.position, checkSphereSize);
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.collider.attachedRigidbody;
+
+        if (hit.collider.CompareTag("MovingPlatform"))
+        {
+            platform = hit.collider.transform;
+            platformVelocity = platform.GetComponent<Rigidbody>() ? platform.GetComponent<Rigidbody>().velocity : Vector3.zero;
+        }
+        else
+        {
+            platform = null;
+            platformVelocity = Vector3.zero;
+        }
+
+        // Ensure object has Rigidbody and isn't kinematic
+        if (rb != null && !rb.isKinematic)
+        {
+            Vector3 pushDirection = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z); // Ignore Y-axis
+            rb.velocity = pushDirection * pushStrength;
+        }
+
+
+        void LateUpdate()
+        {
+            if (platform != null)
+            {
+                transform.position += platformVelocity * Time.deltaTime;
+            }
+        }
+    }
+    public Vector3 GetMoveDirection()
+    {
+        return moveDir; // Adjust based on your input system
     }
 
 }

@@ -31,6 +31,7 @@ public class GravityAbility : MonoBehaviour
         Vector3 gravityVector = new Vector3();
         gravityVector.y = currentGravity;
         controller.Move(gravityVector * Time.deltaTime);
+        Debug.Log(IsOnGround());
     }
 
     public bool IsOnGround()
