@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GravityAbility : MonoBehaviour
 {
+    [SerializeField] private Transform groundCheckPosition;
     [SerializeField] private float isOnGroundCheckSphereSize = 0.01f;
     [SerializeField] private LayerMask groundLayer;
 
@@ -36,10 +37,15 @@ public class GravityAbility : MonoBehaviour
 
     public bool IsOnGround()
     {
-        return Physics.CheckSphere(transform.position, isOnGroundCheckSphereSize, groundLayer);
+        return Physics.CheckSphere(groundCheckPosition.position, isOnGroundCheckSphereSize, groundLayer);
     }
     public void AddForce(Vector3 force)
     {
         currentGravity = force.y;
+    }
+    private void OnDrawGizmos()
+    {
+        //Drawing a sphere at the feet of the player
+        Gizmos.DrawSphere(groundCheckPosition.position,0.1f);
     }
 }

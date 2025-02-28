@@ -41,7 +41,7 @@ public class PlatformMovement : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered platform");
+            //Debug.Log("Player entered platform");
             playerCharacterController = other.GetComponent<CharacterController>();
         }
     }
@@ -50,7 +50,7 @@ public class PlatformMovement : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player left platform");
+            //Debug.Log("Player left platform");
             playerCharacterController = null;
         }
     }

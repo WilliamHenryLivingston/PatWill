@@ -27,7 +27,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private ShootingAbility shootAbility;
     [SerializeField] private JumpAbility jumpAbility;
     [SerializeField] private InteractAbility interactAbility;
-    [SerializeField] private CommanderAbility commandAbility;
+    //[SerializeField] private CommanderAbility commandAbility;
 
     //Directional Inputs
     private Vector2 lookDirection;
@@ -44,10 +44,10 @@ public class PlayerInput : MonoBehaviour
     private Transform currentPlatform;
     private Vector3 lastPlatformPosition;
 
-    //-------------------------------------------------------------
+
     private Vector3 platformVelocity;
     private Transform platform;
-    //-------------------------------------------------------
+
     void Start()
     {
         //Lambda expression
@@ -76,6 +76,12 @@ public class PlayerInput : MonoBehaviour
             moveDir.x = Input.GetAxis("Horizontal");
             moveDir.z = Input.GetAxis("Vertical");
             moveAbilty.Move(moveDir);
+
+            // Prevent moving into a blocked box
+            if (IsPushingBlocked(moveDir))
+            {
+                moveDir = Vector3.zero; // Stop movement
+            }
         }
         // Apply platform movement
         if (currentPlatform != null)
@@ -107,10 +113,10 @@ public class PlayerInput : MonoBehaviour
             interactAbility.Interact();
         }
 
-        if (commandAbility && Input.GetMouseButtonDown(1))
-        {
-            commandAbility.Command();
-        }
+        //if (commandAbility && Input.GetMouseButtonDown(1))
+        //{
+        //    commandAbility.Command();
+        //}
     }
 
     //Testing the sphere location
@@ -141,19 +147,23 @@ public class PlayerInput : MonoBehaviour
             Vector3 pushDirection = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z); // Ignore Y-axis
             rb.velocity = pushDirection * pushStrength;
         }
-
-
-        void LateUpdate()
-        {
-            if (platform != null)
-            {
-                transform.position += platformVelocity * Time.deltaTime;
-            }
-        }
     }
     public Vector3 GetMoveDirection()
     {
         return moveDir; // Adjust based on your input system
     }
 
+    // Check if the player is trying to push into a blocked box
+    private bool IsPushingBlocked(Vector3 moveDirection)
+    {
+        float checkDistance = 0.2f; // Adjust as needed
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, moveDirection, out hit, checkDistance))
+        {
+            return hit.collider != null && hit.collider.CompareTag("PushableBox");
+        }
+
+        return false;
+    }
 }
