@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5214648666251282558}
   - component: {fileID: 1220015675496406451}
   - component: {fileID: 5152937809299916180}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: MovingPlatform
   m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3951779959090680995}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: EndPosition
   m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7910945242457478656}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: StartPosition
   m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 278726362644986340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MovingPlatform(NEW)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
