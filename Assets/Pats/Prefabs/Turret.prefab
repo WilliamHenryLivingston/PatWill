@@ -211,7 +211,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   playerInTrigger: 0
-  turretDamageOn: 0
+  turretDamageOn: 1
   lineRenderer: {fileID: 2094198453679975942}
   weaponPoint: {fileID: 5226576137218944903}
   turretHead: {fileID: 1488459497344647689}

@@ -54,6 +54,8 @@ public class PlayerInput : MonoBehaviour
         GetComponent<HealthSystem>().OnDead += () =>
         {
             this.enabled = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         };
         //Lambda expression
 

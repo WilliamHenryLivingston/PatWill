@@ -65,7 +65,7 @@ public class TurretAttack : TurretState
                 Debug.Log("Damaging the player");
                 if (turretDamageOn == true)
                 {
-                    playerHealth.DecreaseHealth(1f); //disabled for testing
+                    playerHealth.DecreaseHealth(0.01f);
                 }
             }
             else

@@ -7,6 +7,8 @@ public class HealthSystem : MonoBehaviour
 {
     [SerializeField] private float currentHealth;
     [SerializeField] private float maxHealth;
+    [SerializeField] private UIManager uIManager;
+ 
 
     //Observer Pattern(Actions)
     public Action<float> OnLifeChanged;
@@ -38,6 +40,7 @@ public class HealthSystem : MonoBehaviour
         if (currentHealth <= 0)
         {
             OnDead?.Invoke();
+            uIManager.PlayGameOverScreen();
         }
     }
 
