@@ -3,17 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //public static GameManager Instance { get; private set; }
+    private PlayerInput playerInput;
 
-    private void Awake()
+    public void StartGame()
     {
-        //if (Instance != null && Instance != this)
-        //{
-        //    Destroy(gameObject);
-        //    return;
-        //}
-        //Instance = this;
-        //DontDestroyOnLoad(gameObject);
+        SceneManager.LoadScene("MainLevel");
     }
     public void RestartGame()
     {
@@ -31,4 +25,16 @@ public class GameManager : MonoBehaviour
         Application.Quit();
         Debug.Log("Game is exiting");
     }
+
+    public void DisablePlayerMovement()
+    {
+        playerInput.gameObject.SetActive(false);
+    }
+
+    public void EnablePlayerMovement()
+    {
+        playerInput.gameObject.SetActive(true);
+    }
+
+
 }

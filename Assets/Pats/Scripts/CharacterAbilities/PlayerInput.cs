@@ -54,8 +54,7 @@ public class PlayerInput : MonoBehaviour
         GetComponent<HealthSystem>().OnDead += () =>
         {
             this.enabled = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            CursorEnable();
         };
         //Lambda expression
 
@@ -167,5 +166,17 @@ public class PlayerInput : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void CursorEnable()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CursorDisable()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
