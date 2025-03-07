@@ -62,21 +62,23 @@ public class TurretAttack : TurretState
         {
             if (tempHit.collider.CompareTag("Player"))
             {
-                Debug.Log("Damaging the player");
+                //Debug.Log("Damaging the player");
                 if (turretDamageOn == true)
                 {
-                    playerHealth.DecreaseHealth(0.01f);
+                    playerHealth.DecreaseHealth(0.001f);
                 }
             }
             else
             {
-                Debug.Log("Target is being shielded!!");
+                //Debug.Log("Target is being shielded!!");
 
             }
         }
         Vector3 startPoint = weaponPoint.position;
-        Vector3 endPoint = new Vector3(tempHit.point.x,weaponPoint.position.y,tempHit.point.z);
-        lineRenderer.SetPosition(0, startPoint);
-        lineRenderer.SetPosition(1, endPoint);
+        Vector3 endPoint = tempHit.point;
+        //lineRenderer.SetPosition(0, startPoint);
+        //lineRenderer.SetPosition(1, endPoint);
+        Debug.Log(endPoint);
     }
 }
+//new Vector3(tempHit.point.x, tempHit.point.y, tempHit.point.x);
