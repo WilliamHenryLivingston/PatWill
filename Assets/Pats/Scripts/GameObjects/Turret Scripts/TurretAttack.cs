@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class TurretAttack : TurretState
 {
@@ -12,6 +13,8 @@ public class TurretAttack : TurretState
 
     private bool turretDamageOn = true;
 
+    private Vector3 startPoint;
+    private Vector3 endPoint;
     
     public TurretAttack(TurretStateController turretController) : base(turretController)
     {
@@ -58,7 +61,7 @@ public class TurretAttack : TurretState
         Ray customRay = new Ray(weaponPoint.position, weaponPoint.transform.forward);
         RaycastHit tempHit;
 
-        if (Physics.Raycast(customRay, out tempHit, turretSphereCollider.radius, playerLayer))
+        if (Physics.Raycast(customRay, out tempHit, turretSphereCollider.radius + 1, playerLayer))
         {
             if (tempHit.collider.CompareTag("Player"))
             {
@@ -74,11 +77,17 @@ public class TurretAttack : TurretState
 
             }
         }
-        Vector3 startPoint = weaponPoint.position;
-        Vector3 endPoint = tempHit.point;
-        //lineRenderer.SetPosition(0, startPoint);
-        //lineRenderer.SetPosition(1, endPoint);
+        startPoint = weaponPoint.position;
+        endPoint = tempHit.point;
+        lineRenderer.SetPosition(0, startPoint);
+        lineRenderer.SetPosition(1, endPoint);
         Debug.Log(endPoint);
+    }
+    
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(startPoint, endPoint);
     }
 }
 //new Vector3(tempHit.point.x, tempHit.point.y, tempHit.point.x);
