@@ -9,12 +9,12 @@ public class TurretAttack : TurretState
     private Transform weaponPoint;
     private Transform turretHead;
     private SphereCollider turretSphereCollider;
-    private float scanSpeed;
-
     private bool turretDamageOn = true;
-
     private Vector3 startPoint;
     private Vector3 endPoint;
+    private AudioClip laserSound;
+    private AudioSource loopingAudioSource;
+
     
     public TurretAttack(TurretStateController turretController) : base(turretController)
     {
@@ -27,16 +27,26 @@ public class TurretAttack : TurretState
         turretHead = turretController.GetTurretHead();
         turretSphereCollider = turretController.GetTurretSphereCollider();
         turretDamageOn = turretController.TurretDamageOn();
+        laserSound = turretController.GetAudioClip();
+
     }
 
     public override void EnterState()
     {
         playerHealth = PlayerInput.Instance.GetComponent<HealthSystem>();
         lineRenderer.enabled = true;
+        loopingAudioSource = SoundManager.instance.PlayLoopingSoundEffect(laserSound,weaponPoint,0.5f);
     }
     public override void ExitState()
     {
         lineRenderer.enabled = false;
+        
+        if (loopingAudioSource != null)
+        {
+            loopingAudioSource.Stop();
+            Object.Destroy(loopingAudioSource.gameObject);
+        }
+
     }
     public override void UpdateState(bool playerInTrigger)
     {
@@ -61,33 +71,41 @@ public class TurretAttack : TurretState
         Ray customRay = new Ray(weaponPoint.position, weaponPoint.transform.forward);
         RaycastHit tempHit;
 
-        if (Physics.Raycast(customRay, out tempHit, turretSphereCollider.radius + 1, playerLayer))
+        if (Physics.Raycast(customRay, out tempHit, turretSphereCollider.radius + 3, playerLayer))
         {
             if (tempHit.collider.CompareTag("Player"))
             {
-                //Debug.Log("Damaging the player");
+                LaserLineRenderer(tempHit.point);
+
                 if (turretDamageOn == true)
                 {
+                    //Debug.Log("Damaging the player");
                     playerHealth.DecreaseHealth(0.001f);
                 }
             }
             else
             {
                 //Debug.Log("Target is being shielded!!");
+                lineRenderer.enabled = false;
 
             }
         }
-        startPoint = weaponPoint.position;
-        endPoint = tempHit.point;
-        lineRenderer.SetPosition(0, startPoint);
-        lineRenderer.SetPosition(1, endPoint);
-        Debug.Log(endPoint);
+
+        Debug.DrawLine(startPoint,endPoint);
     }
-    
+
+    public void LaserLineRenderer(Vector3 endPoint)
+    {
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, weaponPoint.position);
+        lineRenderer.SetPosition(1, endPoint);
+        //SoundManager.instance.PlaySoundEffect(laserSound, turretHead.transform, 0.5f);
+
+    }
+
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(startPoint, endPoint);
     }
 }
-//new Vector3(tempHit.point.x, tempHit.point.y, tempHit.point.x);

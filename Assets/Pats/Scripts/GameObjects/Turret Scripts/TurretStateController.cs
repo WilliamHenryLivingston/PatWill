@@ -8,15 +8,17 @@ public class TurretStateController : MonoBehaviour
     [SerializeField] private Transform playerTarget;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private bool playerInTrigger = false;
-    [SerializeField] private bool turretDamageOn = false;
+    
 
     [Header("Turret References")]
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private Transform weaponPoint;
     [SerializeField] private Transform turretHead;
     [SerializeField] private SphereCollider turretSphereCollider;
+    [SerializeField] private AudioClip laserSound;
 
-    [Header("Turret Scanning Settings")]
+    [Header("Turret Settings")]
+    [SerializeField] private bool turretDamageOn = false;
     [SerializeField] private float scanSpeed = 10f;
     [SerializeField] private float rotationMin = -90f;
     [SerializeField] private float rotationMax = 90f;
@@ -25,6 +27,7 @@ public class TurretStateController : MonoBehaviour
     {
         currentState = new TurretIdle(this);
         playerTarget = GameObject.Find("Player")?.transform;
+
     }
     void Start()
     {
@@ -45,6 +48,7 @@ public class TurretStateController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = true;
+
         }
     }
 
@@ -74,6 +78,6 @@ public class TurretStateController : MonoBehaviour
     public float GetRotationMin() => rotationMin;
     public float GetRotationMax() => rotationMax;
     public bool IsPlayerInTrigger() => playerInTrigger;
-
     public bool TurretDamageOn() => turretDamageOn;
+    public AudioClip GetAudioClip() => laserSound;
 }

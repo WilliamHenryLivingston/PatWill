@@ -8,6 +8,7 @@ public class ShootingAbility : MonoBehaviour
     [SerializeField] private Transform weaponTip;
     [SerializeField] private Rigidbody projectilePrefab;
     [SerializeField] private float shootingForce;
+    [SerializeField] private AudioClip shootingSound;
 
     ObjectPooling objectPoolCache;
 
@@ -23,6 +24,7 @@ public class ShootingAbility : MonoBehaviour
 
     public void Shoot()
     {
+        SoundManager.instance.PlaySoundEffect(shootingSound,weaponTip,1f);
         Rigidbody clonedRigidbody = objectPoolCache.RetrieveAvailableBullet().GetRigidbody();
         if (clonedRigidbody == null)
         { 

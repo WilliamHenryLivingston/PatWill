@@ -9,7 +9,7 @@ public class TurretLineRenderer : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Ray laserRay;
     [SerializeField] private RaycastHit hit;
-    [SerializeField] float distanceToHit = 5f;
+    //[SerializeField] float distanceToHit = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,26 +20,32 @@ public class TurretLineRenderer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        laserRay = new Ray(weaponPoint.position, weaponPoint.forward);
-   
-        Physics.Raycast(laserRay,out hit, maxDistance,layerMask);
-        distanceToHit = hit.distance;
-
-        if (hit.collider.CompareTag("Player"))
+        Ray customRay = new Ray(weaponPoint.position, weaponPoint.forward);
+        if (Physics.Raycast(customRay, out RaycastHit tempHit, maxDistance, layerMask))
         {
-            Debug.Log("Hit Player");
+            if (tempHit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Player in ray");
+            }
+            LaserLineRenderer(tempHit.point);
+            Debug.DrawLine(weaponPoint.position, tempHit.point, Color.red);
         }
         else
         {
-            Debug.Log("No Hits Registered");
+            //LaserLineRenderer(weaponPoint.position + weaponPoint.forward * maxDistance);
+            lineRenderer.enabled = false;
         }
-
-            lineRenderer.SetPosition(0, laserRay.origin);
-        lineRenderer.SetPosition(1, hit.point);
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(weaponPoint.position, hit.point);
+        //Gizmos.DrawLine(weaponPoint.position, hit.point);
+    }
+
+    public void LaserLineRenderer(Vector3 endPoint)
+    {
+        lineRenderer.enabled = true;
+        lineRenderer.SetPosition(0, weaponPoint.position);
+        lineRenderer.SetPosition(1, endPoint);
     }
 }

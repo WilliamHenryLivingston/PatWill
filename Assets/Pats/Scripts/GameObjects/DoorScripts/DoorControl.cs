@@ -57,19 +57,20 @@ public class DoorControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //change door colour (Visual Effects)
-  
-        if (needsKey == true)
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Needs a keycard to open!!");
-        }
-        else
-        {
-            foreach (Door door in doors)
+            if (needsKey == true)
             {
-                door.OpenDoor();
+                Debug.Log("Needs a keycard to open!!");
+            }
+            else
+            {
+                foreach (Door door in doors)
+                {
+                    door.OpenDoor();
+                }
             }
         }
-
     }
 
     private void OnTriggerStay(Collider other)
@@ -79,16 +80,18 @@ public class DoorControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-
-        if (lockDoorAfterExit == true && needsKey == false)
+        if (other.CompareTag("Player"))
         {
-            StartCoroutine("LockAfterClosing");
-        }
-        else
-        {
-            foreach (Door door in doors)
+            if (lockDoorAfterExit == true && needsKey == false)
             {
-                door.CloseDoor();
+                StartCoroutine("LockAfterClosing");
+            }
+            else
+            {
+                foreach (Door door in doors)
+                {
+                    door.CloseDoor();
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8929686809206066657}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +44,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5262184700629866882}
   - component: {fileID: 8259432949615764905}
-  - component: {fileID: 2094198453679975942}
   - component: {fileID: 4234869780679995818}
-  m_Layer: 0
+  - component: {fileID: 5445147730598945202}
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -88,9 +88,35 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 8
+  m_Radius: 14
   m_Center: {x: 0, y: 0, z: 0}
---- !u!120 &2094198453679975942
+--- !u!114 &4234869780679995818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4762431644174331799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bcea5c43bbc204aa1bad07d2e3bc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTarget: {fileID: 0}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 136
+  playerInTrigger: 0
+  lineRenderer: {fileID: 5445147730598945202}
+  weaponPoint: {fileID: 5226576137218944903}
+  turretHead: {fileID: 1488459497344647689}
+  turretSphereCollider: {fileID: 8259432949615764905}
+  laserSound: {fileID: 0}
+  turretDamageOn: 1
+  scanSpeed: 10
+  rotationMin: -90
+  rotationMax: 90
+--- !u!120 &5445147730598945202
 LineRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -133,8 +159,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 1.1, z: 0.60504293}
-  - {x: 0, y: 1, z: 5}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -143,7 +169,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.10526276
+        value: 0.15151405
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -180,7 +206,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -191,34 +217,9 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &4234869780679995818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762431644174331799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02bcea5c43bbc204aa1bad07d2e3bc97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTarget: {fileID: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 136
-  playerInTrigger: 0
-  turretDamageOn: 1
-  lineRenderer: {fileID: 2094198453679975942}
-  weaponPoint: {fileID: 5226576137218944903}
-  turretHead: {fileID: 1488459497344647689}
-  turretSphereCollider: {fileID: 8259432949615764905}
-  scanSpeed: 10
-  rotationMin: -90
-  rotationMax: 90
 --- !u!1 &5412717951219237331
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5226576137218944903}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +262,7 @@ GameObject:
   - component: {fileID: 6417865717771505435}
   - component: {fileID: 1429898301849933418}
   - component: {fileID: 2723149314795788074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurretBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +345,7 @@ GameObject:
   - component: {fileID: 1488459497344647689}
   - component: {fileID: 4057612716233608573}
   - component: {fileID: 4565060401742810967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurretHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +430,7 @@ GameObject:
   - component: {fileID: 4689672518379559774}
   - component: {fileID: 8340359871158078080}
   - component: {fileID: 3602297745039062344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurretPost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +536,7 @@ GameObject:
   - component: {fileID: 3720116213169935428}
   - component: {fileID: 1661420914418454785}
   - component: {fileID: 6181687291299374431}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurretBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
