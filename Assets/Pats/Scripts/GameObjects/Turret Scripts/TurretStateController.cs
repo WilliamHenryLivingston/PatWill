@@ -15,7 +15,7 @@ public class TurretStateController : MonoBehaviour
     [SerializeField] private Transform weaponPoint;
     [SerializeField] private Transform turretHead;
     [SerializeField] private SphereCollider turretSphereCollider;
-    [SerializeField] private AudioClip laserSound;
+    [SerializeField] private AudioSource laserAudioSource;
 
     [Header("Turret Settings")]
     [SerializeField] private bool turretDamageOn = false;
@@ -33,6 +33,7 @@ public class TurretStateController : MonoBehaviour
     void Start()
     {
         currentState.EnterState();
+        laserAudioSource.loop = true;
     }
     void Update()
     {
@@ -49,7 +50,10 @@ public class TurretStateController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = true;
-
+            if (!laserAudioSource.isPlaying)
+            {
+                SoundManager.instance.PlaySound(laserAudioSource);
+            }
         }
     }
 
@@ -58,6 +62,7 @@ public class TurretStateController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = false;
+            SoundManager.instance.StopSound(laserAudioSource);
         }
     }
 
@@ -81,6 +86,5 @@ public class TurretStateController : MonoBehaviour
     public float GetTurretdamage() => turretDamage;
     public bool IsPlayerInTrigger() => playerInTrigger;
     public bool TurretDamageOn() => turretDamageOn;
-    public AudioClip GetAudioClip() => laserSound;
 
 }

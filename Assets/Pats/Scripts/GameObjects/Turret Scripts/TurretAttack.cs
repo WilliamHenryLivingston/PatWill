@@ -12,8 +12,7 @@ public class TurretAttack : TurretState
     private bool turretDamageOn = true;
     private Vector3 startPoint;
     private Vector3 endPoint;
-    private AudioClip laserSound;
-    private AudioSource loopingAudioSource;
+
     private float turretDamage;
 
     
@@ -28,7 +27,7 @@ public class TurretAttack : TurretState
         turretHead = turretController.GetTurretHead();
         turretSphereCollider = turretController.GetTurretSphereCollider();
         turretDamageOn = turretController.TurretDamageOn();
-        laserSound = turretController.GetAudioClip();
+
         turretDamage = turretController.GetTurretdamage();
 
     }
@@ -37,17 +36,13 @@ public class TurretAttack : TurretState
     {
         playerHealth = PlayerInput.Instance.GetComponent<HealthSystem>();
         lineRenderer.enabled = true;
-        loopingAudioSource = SoundManager.instance.PlayLoopingSoundEffect(laserSound,weaponPoint,0.5f);
+
     }
     public override void ExitState()
     {
         lineRenderer.enabled = false;
         
-        if (loopingAudioSource != null)
-        {
-            loopingAudioSource.Stop();
-            Object.Destroy(loopingAudioSource.gameObject);
-        }
+
 
     }
     public override void UpdateState(bool playerInTrigger)
@@ -58,6 +53,7 @@ public class TurretAttack : TurretState
         if (playerInTrigger == false)
         {
             turretController.SwitchState(new TurretIdle(turretController));
+
         }
     }
     public void LookAtTarget()
@@ -99,9 +95,10 @@ public class TurretAttack : TurretState
     public void LaserLineRenderer(Vector3 endPoint)
     {
         lineRenderer.enabled = true;
+
         lineRenderer.SetPosition(0, weaponPoint.position);
         lineRenderer.SetPosition(1, endPoint);
-        //SoundManager.instance.PlaySoundEffect(laserSound, turretHead.transform, 0.5f);
+
 
     }
 

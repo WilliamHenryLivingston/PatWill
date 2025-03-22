@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4128768809866779573}
   - component: {fileID: 2196392354073377013}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: PushDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1281035902060884153, guid: 06a91b0497523764183586f4c474fc6e, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2005340364725751420, guid: 06a91b0497523764183586f4c474fc6e, type: 3}
       propertyPath: m_Name
@@ -75,7 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2005340364725751420, guid: 06a91b0497523764183586f4c474fc6e, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2005340364725751420, guid: 06a91b0497523764183586f4c474fc6e, type: 3}
       propertyPath: m_TagString

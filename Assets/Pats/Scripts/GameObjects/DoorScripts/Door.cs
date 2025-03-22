@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     [SerializeField] private PhysicalButton doorButton;
     [SerializeField] private Vector3 openOffset;
     [SerializeField] private float doorSpeed;
-    [SerializeField] private AudioClip doorSound;
+    [SerializeField] private AudioSource doorSound;
     private Vector3 closedPosition;
     private bool isOpen = false;
     // Start is called before the first frame update
@@ -19,6 +19,7 @@ public class Door : MonoBehaviour
         closedPosition = transform.position;
 
         if (doorButton != null) doorButton.OnPressed.AddListener(OpenDoor);
+        doorSound.loop = false;
     }
 
     private void Update()
@@ -38,12 +39,18 @@ public class Door : MonoBehaviour
     public void OpenDoor()
     {
         isOpen = true;
-        SoundManager.instance.PlaySoundEffect(doorSound, gameObject.transform, 1f);
+        if (!doorSound.isPlaying)
+        {
+            SoundManager.instance.PlaySound(doorSound);
+        }
     }
 
     public void CloseDoor()
     {
         isOpen = false;
-        SoundManager.instance.PlaySoundEffect(doorSound, gameObject.transform, 1f);
+        if (!doorSound.isPlaying)
+        {
+            SoundManager.instance.PlaySound(doorSound);
+        }
     }
 }

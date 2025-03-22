@@ -8,13 +8,14 @@ public class ShootingAbility : MonoBehaviour
     [SerializeField] private Transform weaponTip;
     [SerializeField] private Rigidbody projectilePrefab;
     [SerializeField] private float shootingForce;
-    [SerializeField] private AudioClip shootingSound;
+    [SerializeField] private AudioSource shootingSound;
 
     ObjectPooling objectPoolCache;
 
     private void Awake()
     {
         objectPoolCache = FindObjectOfType<ObjectPooling>();
+        shootingSound.loop = false;
     }
 
     public void UnlockAbolity()
@@ -24,7 +25,7 @@ public class ShootingAbility : MonoBehaviour
 
     public void Shoot()
     {
-        SoundManager.instance.PlaySoundEffect(shootingSound,weaponTip,1f);
+        SoundManager.instance.PlaySound(shootingSound);
         Rigidbody clonedRigidbody = objectPoolCache.RetrieveAvailableBullet().GetRigidbody();
         if (clonedRigidbody == null)
         { 
