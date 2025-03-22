@@ -19,6 +19,7 @@ public class TurretStateController : MonoBehaviour
 
     [Header("Turret Settings")]
     [SerializeField] private bool turretDamageOn = false;
+    [Tooltip("Lower = easier, Higher = harder")][SerializeField] [Range(0f, 1f)] private float turretDamage = 0.1f;
     [SerializeField] private float scanSpeed = 10f;
     [SerializeField] private float rotationMin = -90f;
     [SerializeField] private float rotationMax = 90f;
@@ -77,7 +78,9 @@ public class TurretStateController : MonoBehaviour
     public float GetScanSpeed() => scanSpeed;
     public float GetRotationMin() => rotationMin;
     public float GetRotationMax() => rotationMax;
+    public float GetTurretdamage() => turretDamage;
     public bool IsPlayerInTrigger() => playerInTrigger;
     public bool TurretDamageOn() => turretDamageOn;
     public AudioClip GetAudioClip() => laserSound;
+
 }

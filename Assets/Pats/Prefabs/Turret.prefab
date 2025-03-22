@@ -111,8 +111,9 @@ MonoBehaviour:
   weaponPoint: {fileID: 5226576137218944903}
   turretHead: {fileID: 1488459497344647689}
   turretSphereCollider: {fileID: 8259432949615764905}
-  laserSound: {fileID: 0}
+  laserSound: {fileID: 8300000, guid: 30932835c4c583a458297f6006594568, type: 3}
   turretDamageOn: 1
+  turretDamage: 0.5
   scanSpeed: 10
   rotationMin: -90
   rotationMax: 90

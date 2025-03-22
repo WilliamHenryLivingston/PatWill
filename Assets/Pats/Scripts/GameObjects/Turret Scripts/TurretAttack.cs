@@ -14,6 +14,7 @@ public class TurretAttack : TurretState
     private Vector3 endPoint;
     private AudioClip laserSound;
     private AudioSource loopingAudioSource;
+    private float turretDamage;
 
     
     public TurretAttack(TurretStateController turretController) : base(turretController)
@@ -28,6 +29,7 @@ public class TurretAttack : TurretState
         turretSphereCollider = turretController.GetTurretSphereCollider();
         turretDamageOn = turretController.TurretDamageOn();
         laserSound = turretController.GetAudioClip();
+        turretDamage = turretController.GetTurretdamage();
 
     }
 
@@ -80,7 +82,7 @@ public class TurretAttack : TurretState
                 if (turretDamageOn == true)
                 {
                     //Debug.Log("Damaging the player");
-                    playerHealth.DecreaseHealth(0.001f);
+                    playerHealth.DecreaseHealth(turretDamage);
                 }
             }
             else
