@@ -30,29 +30,6 @@ public class PlatformMovement : MonoBehaviour
         // Move the platform
         platformRigidbody.MovePosition(newPosition);
 
-        // If player is on the platform, move them manually
-        if (playerCharacterController != null)
-        {
-            playerCharacterController.Move(velocity * Time.fixedDeltaTime);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //Debug.Log("Player entered platform");
-            playerCharacterController = other.GetComponent<CharacterController>();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //Debug.Log("Player left platform");
-            playerCharacterController = null;
-        }
     }
 }
 

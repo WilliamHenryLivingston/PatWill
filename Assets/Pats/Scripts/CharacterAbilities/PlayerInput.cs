@@ -44,10 +44,6 @@ public class PlayerInput : MonoBehaviour
     private Transform currentPlatform;
     private Vector3 lastPlatformPosition;
 
-
-    private Vector3 platformVelocity;
-    private Transform platform;
-
     void Start()
     {
         //Lambda expression
@@ -84,12 +80,12 @@ public class PlayerInput : MonoBehaviour
                 moveDir = Vector3.zero; // Stop movement
             }
         }
-        // Apply platform movement
+        
         if (currentPlatform != null)
         {
-            Vector3 platformMovement = currentPlatform.position - lastPlatformPosition;
-            controller.Move(platformMovement);
-            lastPlatformPosition = currentPlatform.position;
+            Vector3 platformDelta = currentPlatform.position - lastPlatformPosition;
+            transform.position += platformDelta; // Move player with platform
+            lastPlatformPosition = currentPlatform.position; // Update position
         }
 
         if (lookAbilty)
@@ -113,11 +109,6 @@ public class PlayerInput : MonoBehaviour
             //Debug.Log("F button Pressed");
             interactAbility.Interact();
         }
-
-        //if (commandAbility && Input.GetMouseButtonDown(1))
-        //{
-        //    commandAbility.Command();
-        //}
     }
 
     //Testing the sphere location
@@ -130,17 +121,6 @@ public class PlayerInput : MonoBehaviour
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody rb = hit.collider.attachedRigidbody;
-
-        if (hit.collider.CompareTag("MovingPlatform"))
-        {
-            platform = hit.collider.transform;
-            platformVelocity = platform.GetComponent<Rigidbody>() ? platform.GetComponent<Rigidbody>().velocity : Vector3.zero;
-        }
-        else
-        {
-            platform = null;
-            platformVelocity = Vector3.zero;
-        }
 
         // Ensure object has Rigidbody and isn't kinematic
         if (rb != null && !rb.isKinematic)
@@ -178,5 +158,22 @@ public class PlayerInput : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("MovingPlatform"))
+        {
+            currentPlatform = other.transform;
+            lastPlatformPosition = currentPlatform.position; // Store initial position
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("MovingPlatform") && currentPlatform == other.transform)
+        {
+            currentPlatform = null;
+        }
     }
 }
